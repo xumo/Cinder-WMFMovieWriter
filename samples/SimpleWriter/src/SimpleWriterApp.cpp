@@ -39,12 +39,16 @@ class SimpleWriterApp : public App {
 	//so in this case the screen will be rendered into a FBO
 	ci::gl::FboRef		mFbo;
 
+
+	//Texture for test pattern
+	gl::TextureRef		mTexture;
 };
 
 void SimpleWriterApp::setup()
 {
 	fs::path path = getSaveFilePath();
-	
+	mTexture = gl::Texture::create(loadImage(getAssetPath("testpattern.png")));
+
 	
 	if (!path.empty()) {
 		auto format = wmf::MovieWriter::Format().codec(wmf::MovieWriter::H264);
@@ -71,7 +75,8 @@ void SimpleWriterApp::update()
 
 	gl::ScopedFramebuffer fbScp(mFbo);
 	gl::color(Color::white());
-	
+
+	gl::draw(mTexture, getWindowBounds());
 	//Draw the same scene as the Quicktime movie writer example
 	gl::color(Color(CM_HSV, fmod(getElapsedFrames() / 30.0f, 1.0f), 1, 1));
 	gl::draw(geom::Circle().center(getWindowCenter()).radius(getElapsedFrames()).subdivisions(100));
