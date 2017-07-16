@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cinder>
+<block
+	name="WMFMovieWriter"
+	id="org.libcinder.wmf"
+	author="Cinder Project, Rodrigo Torres"
+	license="MIT"
+	summary="Simple movie writer using the Windows Media Foundation"
+	git="https://github.com/xumo/Cinder-WMFMovieWriter"
+	>
+	<source>src/wmf/MovieWriter.cpp</source>
+	<header>src/wmf/MovieWriter.h</header>
+	
+	<includePath system="true">src</includePath>
+</block>
+</cinder>
